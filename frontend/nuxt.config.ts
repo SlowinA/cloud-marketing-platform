@@ -1,7 +1,10 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@nuxt/devtools', '@nuxt/icon', '@nuxt/fonts', '@nuxt/eslint', '@nuxt/ui', '@nuxt/image', '@nuxt/content', '@nuxt/scripts'],
+  modules: ['@nuxt/devtools', '@nuxt/icon', '@nuxt/fonts', '@nuxt/eslint', '@nuxt/ui', '@nuxt/image', '@nuxt/content', '@nuxt/scripts', 'nuxt-echarts',],
   css: ['~/assets/css/main.css'],
+  echarts: {
+    // Options
+  },
   ui: {
     theme: {
       colors: [

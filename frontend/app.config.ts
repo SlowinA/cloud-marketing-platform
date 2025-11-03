@@ -1,5 +1,13 @@
 export default defineAppConfig({
   ui: {
+    colors: {
+      primary: 'emerald-energy',  // '#33FF99'
+      accent: 'stardust',         // '#FFFF99'
+      secondary: 'magic-nebula',  // '#FF99DD'
+      neutral: 'stone-clarity',   // #ABB9D4'
+      success: 'success',         // #34D399
+      error: 'error'              // #F43F5E
+    },
     icons: {
       arrowDown: 'i-lucide-arrow-down',
       arrowLeft: 'i-lucide-arrow-left',
@@ -42,6 +50,6 @@ export default defineAppConfig({
       tip: 'i-lucide-lightbulb',
       upload: 'i-lucide-upload',
       warning: 'i-lucide-triangle-alert'
-    }
-  }
+    },
+  },
 })

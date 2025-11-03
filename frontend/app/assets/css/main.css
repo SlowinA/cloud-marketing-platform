@@ -1,40 +1,48 @@
+/* ~/assets/css/main.css */
 @import "tailwindcss";
 @import "@nuxt/ui";
 
 @theme {
-  /* --- System Designu: Breakpointy --- */
+  /* --- Breakpoints --- */
   --breakpoint-xs: 320px;
-  --breakpoint-xxl: 1920px;
-  --breakpoint-3xl: 1920px; /* Zgodność z Twoimi pierwotnymi i nowymi nazwami */
+  --breakpoint-xxl: 1920px; /* Zgodne z xxl */
+  --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
   --breakpoint-5xl: 3840px;
 
-  /* --- System Designu: Kolory, Typografia, Cienie, Animacje --- */
+  /* --- Color --- */
+  /* Uwaga: Aby w pełni wykorzystać Nuxt UI, każdy kolor (nawet niestandardowy)
+     powinien mieć odcienie od 50 do 950. Poniżej są zdefiniowane Twoje dokładne wartości.
+     Brak pełnej palety 50-950 oznacza, że użycie tych kolorów w klasach Tailwind
+     będzie wymagało podania pełnej nazwy: np. text-cosmic-deep. */
+
+  /* Primary */
+  --color-cosmic-deep: #0A2E36;
+  --color-emerald-energy: #33FF99;
+
+  /* Accent */
+  --color-magic-nebula: #FF99DD;
+  --color-stardust: #FFFF99;
+
+  /* Dark */
+  --color-night-abyss: #10141D;
+  --color-dark-aether: #1B212E;
+  --color-stone-clarity: #ABB9D4;
+
+  /* Light */
+  --color-quartz-dawn: #F5F7FA;
+  --color-white-page: #FFFFFF;
+  --color-graphite-thought: #3D4A5C;
   
-  /* Kolory - zdefiniowane jako custom properties */
-  /* Aby używać ich w Tailwind i Nuxt UI (np. jako 'primary'), musisz użyć ich w formacie --color-nazwa-odcienia, co by wymagało 50-950 lub oddzielnej konfiguracji w app.config.ts/nuxt.config.ts. Poniżej są zdefiniowane jako ogólne zmienne, które można użyć w innych zmiennych CSS lub w tle/gradientach. */
-  --color-primary-cosmic-deep: #0A2E36;
-  --color-primary-emerald-energy: #33FF99;
-  
-  --color-accent-magic-nebula: #FF99DD;
-  --color-accent-stardust: #FFFF99;
-  
-  --color-dark-night-abyss: #10141D;
-  --color-dark-dark-aether: #1B212E;
-  --color-dark-stone-clarity: #ABB9D4;
-  
-  --color-light-quartz-dawn: #F5F7FA;
-  --color-light-white-page: #FFFFFF;
-  --color-light-graphite-thought: #3D4A5C;
-  
-  --color-functional-success: #34D399;
-  --color-functional-error: #F43F5E;
+  /* Functional (Success/Error) */
+  --color-success: #34D399;
+  --color-error: #F43F5E;
 
 
-  /* Typografia (Fonty) - zmienna dla czcionki sans */
+  /* --- Fonts --- */
   --font-sans: BrandSans, ui-sans-serif, system-ui, sans-serif;
 
-  /* Rozmiary czcionek (fontSize) - wymagają prefiksu --font-size- */
+  /* Font size */
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-base: 16px;
@@ -42,13 +50,24 @@
   --font-size-xl: 36px;
   --font-size-2xl: 44px;
 
-  /* Cienie (boxShadow) - wymagają prefiksu --box-shadow- */
+
+  /* --- boxShadow --- */
   --box-shadow-large: 0px 4px 16px 0px rgba(0, 0, 0, 0.12);
   --box-shadow-deep-below: 0px -4px 16px 0px rgba(0, 0, 0, 0.12);
   --box-shadow-deep-above: 0px 12px 40px 0px rgba(0, 0, 0, 0.20);
 
-  /* Animacje i Keyframes: W Tailwind CSS v4 keyframes i custom animations są definiowane wewnątrz @theme za pomocą --keyframe- i --animation- */
-  
+
+  /* --- Animations and transitions --- */
+  /* Transition duration */
+  --transition-duration-fast: 200ms;
+  --transition-duration-medium: 300ms;
+  --transition-duration-slow: 400ms;
+
+  /* Transition function */
+  --transition-timing-function-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --transition-timing-function-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --transition-timing-function-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
   /* Keyframes */
   --keyframe-moveGradient: {
     from, to {
@@ -70,35 +89,21 @@
     }
   };
 
-  /* Czas trwania przejścia (transitionDuration) - wymagają prefiksu --transition-duration- */
-  --transition-duration-fast: 200ms;
-  --transition-duration-medium: 300ms;
-  --transition-duration-slow: 400ms;
-
-  /* Funkcja przejścia (transitionTimingFunction) - wymagają prefiksu --transition-timing-function- */
-  --transition-timing-function-ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --transition-timing-function-ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --transition-timing-function-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Animacje */
+  /* Animations */
   --animation-nebula-flow: moveGradient 15s ease infinite;
   --animation-subtle-pulse: subtlePulse 10s ease-in-out infinite;
 
-  /* Tła i Gradienty (backgroundImage) - wymagają prefiksu --background-image- */
-  --background-image-nebula-soft: radial-gradient(circle at 30% 30%, var(--color-accent-stardust), var(--color-accent-magic-nebula), var(--color-primary-emerald-energy), var(--color-primary-cosmic-deep));
-  --background-image-nebula-linear: linear-gradient(135deg, var(--color-primary-cosmic-deep), var(--color-primary-emerald-energy), var(--color-accent-stardust), var(--color-accent-magic-nebula));
-  --background-image-nebula-conic: conic-gradient(from 90deg at 50% 50%, var(--color-primary-cosmic-deep), var(--color-primary-emerald-energy), var(--color-accent-stardust), var(--color-accent-magic-nebula), var(--color-primary-cosmic-deep));
-  --background-image-nebula-mesh: radial-gradient(ellipse farthest-corner at 0% 0%, hsla(320, 100%, 80%, 0.6) 0%, transparent 50%), radial-gradient(ellipse farthest-corner at 0% 100%, hsla(197, 71%, 13%, 0.7) 0%, transparent 60%), radial-gradient(ellipse farthest-corner at 100% 0%, hsla(150, 100%, 60%, 0.7) 0%, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, hsla(60, 100%, 80%, 0.5) 0%, transparent 70%);
-  --background-image-cosmic-rift: linear-gradient(105deg, var(--color-dark-night-abyss) 49.9%, var(--color-primary-emerald-energy) 50%, var(--color-primary-cosmic-deep) 50.1%);
-  --background-image-stardust-cloud: radial-gradient(ellipse 50% 50% at 50% 50%, hsla(60, 100%, 80%, 0.4), transparent 70%), linear-gradient(180deg, var(--color-dark-dark-aether) 0%, var(--color-primary-cosmic-deep) 100%);
-  --background-image-aether-flow: linear-gradient(0deg, transparent 0%, hsla(320, 100%, 80%, 0.2) 50%, transparent 100%), linear-gradient(90deg, var(--color-primary-cosmic-deep), var(--color-dark-dark-aether));
-  --background-image-nebula-heart: radial-gradient(circle at 50% 50%, var(--color-accent-magic-nebula), hsla(320, 100%, 80%, 0.4) 30%, var(--color-primary-cosmic-deep) 70%);
-  --background-image-event-horizon: radial-gradient(circle at 20% 50%, var(--color-accent-stardust) 0%, hsla(60, 100%, 80%, 0) 25%), radial-gradient(circle at 80% 50%, var(--color-primary-emerald-energy) 0%, hsla(150, 100%, 60%, 0) 25%), linear-gradient(90deg, var(--color-dark-night-abyss) 0%, #000 70%);
-  --background-image-crystal-shine: conic-gradient(from 180deg at 50% 50%, var(--color-primary-cosmic-deep), var(--color-dark-dark-aether), var(--color-dark-stone-clarity), var(--color-dark-dark-aether), var(--color-primary-cosmic-deep));
-}
 
-:root {
-  /* Możesz tutaj zdefiniować aliasy Nuxt UI, używając swoich customowych kolorów */
-  /* Przykładowe użycie, jeśli chcesz, by "primary" Nuxt UI odwoływało się do "emerald-energy" */
-  /* --ui-primary: var(--color-primary-emerald-energy); */
+  /* --- Gradients --- */
+  --background-image-nebula-soft: radial-gradient(circle at 30% 30%, var(--color-stardust), var(--color-magic-nebula), var(--color-emerald-energy), var(--color-cosmic-deep));
+  --background-image-nebula-linear: linear-gradient(135deg, var(--color-cosmic-deep), var(--color-emerald-energy), var(--color-stardust), var(--color-magic-nebula));
+  --background-image-nebula-conic: conic-gradient(from 90deg at 50% 50%, var(--color-cosmic-deep), var(--color-emerald-energy), var(--color-stardust), var(--color-magic-nebula), var(--color-cosmic-deep));
+  --background-image-nebula-mesh: radial-gradient(ellipse farthest-corner at 0% 0%, hsla(320, 100%, 80%, 0.6) 0%, transparent 50%), radial-gradient(ellipse farthest-corner at 0% 100%, hsla(197, 71%, 13%, 0.7) 0%, transparent 60%), radial-gradient(ellipse farthest-corner at 100% 0%, hsla(150, 100%, 60%, 0.7) 0%, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, hsla(60, 100%, 80%, 0.5) 0%, transparent 70%);
+
+  --background-image-cosmic-rift: linear-gradient(105deg, var(--color-night-abyss) 49.9%, var(--color-emerald-energy) 50%, var(--color-cosmic-deep) 50.1%);
+  --background-image-stardust-cloud: radial-gradient(ellipse 50% 50% at 50% 50%, hsla(60, 100%, 80%, 0.4), transparent 70%), linear-gradient(180deg, var(--color-dark-aether) 0%, var(--color-cosmic-deep) 100%);
+  --background-image-aether-flow: linear-gradient(0deg, transparent 0%, hsla(320, 100%, 80%, 0.2) 50%, transparent 100%), linear-gradient(90deg, var(--color-cosmic-deep), var(--color-dark-aether));
+  --background-image-nebula-heart: radial-gradient(circle at 50% 50%, var(--color-magic-nebula), hsla(320, 100%, 80%, 0.4) 30%, var(--color-cosmic-deep) 70%);
+  --background-image-event-horizon: radial-gradient(circle at 20% 50%, var(--color-stardust) 0%, hsla(60, 100%, 80%, 0) 25%), radial-gradient(circle at 80% 50%, var(--color-emerald-energy) 0%, hsla(150, 100%, 60%, 0) 25%), linear-gradient(90deg, var(--color-night-abyss) 0%, #000 70%);
+  --background-image-crystal-shine: conic-gradient(from 180deg at 50% 50%, var(--color-cosmic-deep), var(--color-dark-aether), var(--color-stone-clarity), var(--color-dark-aether), var(--color-cosmic-deep));
 }

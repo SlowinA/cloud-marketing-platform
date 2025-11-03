@@ -1,12 +1,33 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  modules: ['@nuxt/devtools', '@nuxt/icon', '@nuxt/fonts', '@nuxt/eslint', '@nuxt/ui', '@nuxt/image', '@nuxt/content', '@nuxt/scripts'],
   css: ['~/assets/css/main.css'],
-  devtools: { enabled: true },
-  modules: [
-    '@nuxt/image',
-    '@nuxt/ui',
-    '@nuxt/scripts',
-    '@nuxt/content',
-  ],
+  ui: {
+    theme: {
+      colors: [
+        'cosmic-deep',
+        'dark-aether',
+        'emerald-energy',
+        'graphite-thought',
+        'magic-nebula',
+        'night-abyss',
+        'stardust',
+        'stone-clarity',
+        'quartz-dawn',
+        'white-page',
+
+        'primary',
+        'secondary',
+        'neutral',
+        'info',
+        'warning',
+        'success',
+        'error',
+      ],
+      defaultVariants: {
+        color: 'neutral',
+        size: 'sm'
+      }
+    }
+  }
 })

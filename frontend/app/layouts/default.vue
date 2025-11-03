@@ -3,7 +3,7 @@
     <UiHeader />
     <UiDrawer />
     <div class="relative left-[256px] w-[calc(100%-256px)] min-h-[calc(100vh-64px-40px)] flex-shrink p-2">
-      <div class="">
+      <div class="bg-accent rounded-lg p-4 min-h-full">
         <slot />
       </div>
     </div>
